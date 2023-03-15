@@ -8,23 +8,23 @@ import (
 
 // Judge Flags
 const (
-	// Accepted
+	// JudgeFlagAC Accepted
 	JudgeFlagAC = 0
-	// Presentation Error
+	// JudgeFlagPE Presentation Error
 	JudgeFlagPE = 1
-	// Time Limit Exceeded
+	// JudgeFlagTLE Time Limit Exceeded
 	JudgeFlagTLE = 2
-	// Memory Limit Exceeded
+	// JudgeFlagMLE Memory Limit Exceeded
 	JudgeFlagMLE = 3
-	// Wrong Answer
+	// JudgeFlagWA Wrong Answer
 	JudgeFlagWA = 4
-	// ntime Error
+	// JudgeFlagRE Runtime Error
 	JudgeFlagRE = 5
-	// Output Limit Exceeded
+	// JudgeFlagOLE Output Limit Exceeded
 	JudgeFlagOLE = 6
-	// Compile Error
+	// JudgeFlagCE Compile Error
 	JudgeFlagCE = 7
-	// System Error
+	// JudgeFlagSE System Error
 	JudgeFlagSE = 8
 
 	// 9 is for ReJudge
