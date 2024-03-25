@@ -2,9 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/LanceLRQ/deer-executor/v2/agent"
+	agentConfig "github.com/LanceLRQ/deer-executor/v2/agent/config"
 	"github.com/LanceLRQ/deer-executor/v2/client"
 	"github.com/LanceLRQ/deer-executor/v2/client/generate"
 	"github.com/LanceLRQ/deer-executor/v2/client/run"
+	"github.com/gookit/config/v2"
+	"github.com/gookit/config/v2/yamlv3"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
@@ -69,6 +73,22 @@ func main() {
 				Aliases:     []string{"p"},
 				Usage:       "problem manager",
 				Subcommands: client.AppProblemSubCommands,
+			},
+			{
+				Name:   "agent",
+				Hidden: true,
+				Usage:  "judge service agent service",
+				Before: func(c *cli.Context) error {
+					config.AddDriver(yamlv3.Driver)
+					err := config.LoadFiles(c.String("config"))
+					if err != nil {
+						return err
+					}
+					// 载入服务端配置
+					return agentConfig.LoadGlobalConf()
+				},
+				Action: agent.LaunchJudgeService,
+				Flags:  agent.JudgeServiceCommandFlags,
 			},
 			{
 				Name:   "test",

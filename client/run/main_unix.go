@@ -29,7 +29,7 @@ func UserRunJudge(c *cli.Context) error {
 		return err
 	}
 
-	err = loadSystemConfiguration()
+	err = client.LoadSystemConfiguration()
 	if err != nil {
 		client.NewClientErrorMessage(err, nil).Print(true)
 		return err
